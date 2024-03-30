@@ -1,0 +1,33 @@
+---
+import MainLayout from './MainLayout.astro'
+---
+<MainLayout>
+    <div id="MetaPageContent">
+        <slot/>
+    </div>
+
+    <style is:global>
+        #MetaPageContent p {
+            margin-top: 2em;
+        }
+
+        #MetaPageContent h1 {
+           font-size: 3rem;
+            margin-top: 2em;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 2em;
+        }
+
+        li {
+            list-style-type: square;
+            text-indent: -1em;
+            padding: 10px 0 10px 1em;
+        }
+
+        .astro-code {
+            margin-top: 2em;
+        }
+    </style>
+</MainLayout>

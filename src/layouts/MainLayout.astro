@@ -1,0 +1,16 @@
+---
+import BaseLayout from './BaseLayout.astro'
+import Heading from "../components/Heading.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout>
+    <div id="contents">
+        <main class="container">
+            <div class="mb-16">
+                <Heading/>
+                <slot/>
+            </div>
+            <Footer/>
+        </main>
+    </div>
+</BaseLayout>
