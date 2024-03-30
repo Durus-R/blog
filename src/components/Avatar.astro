@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import headshot from '../assets/Profilbild.jpeg';
+const cite = "Hier kommen Cites hin..." // TODO: Add dynamic Cites
+---
+
+<div class="relative flex items-center gap-x-4">
+    <Image 
+    src={headshot}
+    densities={[1, 2, 3]}
+    alt="Drachenkopf Logo"
+    class="h-14 w-14"
+    />
+ 
+  <div class="text-lg leading-6">
+    <h1 class="font-semibold text-primary text-xl dark:text-white">
+      <span class="absolute inset-0"></span>
+        Blog von Durus
+    </h1>
+    <p class="text-zinc-500 dark:text-zinc-400">{cite}</p>
+  </div>
+</div>

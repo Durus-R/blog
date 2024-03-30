@@ -1,0 +1,34 @@
+---
+import Social from "./Social.astro";
+import { Image} from "astro:assets";
+import Mainquest_Logo from "../assets/mainquest.png";
+import Footer from "./Footer.astro";
+---
+
+<div id="contact">
+    <div class="mb-16 mx-auto">
+        <h2 class="font-bold text-3xl m-0 mb-2">Kontaktier mich</h2>
+        <div>Ich aus persönlichen Gründen nicht auf DMs per Discord, WhatsApp oder ähnlichem.
+            Gerne kannst du mir jedoch eine Nachricht über LinkedIn senden.
+        </div>
+        <div class="flex justify-center mt-40 mb-8">
+            <Image src={Mainquest_Logo}
+                   alt="Mainquest e. V. Logo"/>
+        </div>
+        <p></p>
+        <p></p>An dieser Stelle möchte ich außerdem auf den MainQuest-Discordserver verweisen. Dieser Server ist ein
+        Platz, um mit anderen christlichen Nerds in Kontakt zu treten und sich über Games, Technik, sonstigen Nerdkram
+        und Glauben auszutauschen.&nbsp; <a href="https://mainquest.org">Erfahre hier mehr</a>. <!-- TODO: Auf Community ausweiten-->
+    </div>
+    <Footer/>
+</div>
+
+<style>
+    form {
+        padding: 20px 0;
+    }
+
+    h2 {
+        font-family: "IndustryBlack", sans-serif !important;
+    }
+</style>
