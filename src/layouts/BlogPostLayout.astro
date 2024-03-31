@@ -1,29 +1,21 @@
 ---
-import MainLayout from './Layout.astro'
+import MainLayout from './MainLayout.astro'
 import Heading from "../components/Heading.astro";
 import Footer from "../components/Footer.astro";
 const {frontmatter} = Astro.props
 ---
 
 <MainLayout>
-    <div id="contents">
-        <main class="container">
-            <div class="mb-16">
-                <Heading/>
-                <h1>{frontmatter.title}</h1>
-                <h2>
-                    <div id="date">Geändert am {frontmatter.lastEdited}</div>
-                    {frontmatter.subtitle}</h2>
-                {frontmatter.image && (
-                        <img src={frontmatter.image} alt={frontmatter.title} class="w-full"/>
-                )}
-                <slot/>
-            </div>
-            <Footer/>
-        </main>
-    </div>
+    <h1>{frontmatter.title}</h1>
+    <h2>
+        <div id="date">Geändert am {frontmatter.lastEdited}</div>
+        {frontmatter.subtitle}</h2>
+    {frontmatter.image && (
+            <img src={frontmatter.image} alt={frontmatter.title} class="w-full"/>
+    )}
+    <slot/>
 </MainLayout>
-<style>
+<style is:global>
     h1 {
         font-size: 3rem;
         margin-top: 1rem;
