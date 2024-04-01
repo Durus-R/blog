@@ -1,10 +1,13 @@
 ---
 
-import Social from "./Social.astro";
+import Social from "./Social.vue";
 ---
 <div class="flex justify-center mt-14 mb-10">
-    <Social/>
+    <Social client:visible/>
 </div>
-<div class="flex justify-center mb-16">Dieser Blog basiert auf&nbsp; <a
+<div class="flex justify-center mb-14">Dieser Blog basiert auf&nbsp; <a
         href="https://github.com/leabs/shadowstack-portfolio">ShadowStack Portfolio</a>.
+</div>
+<div class="flex justify-center mb-16">
+    <a href="./impressum">Impressum</a>&nbsp;|&nbsp;<a href="./datenschutz">Datenschutz</a>
 </div>

@@ -4,7 +4,7 @@
 
 <template>
   <h1>Test</h1>
-  <v-btn>Noch ein Test</v-btn>
+  <v-btn rounded="lg">Noch ein Test</v-btn>
 </template>
 
 <style scoped>

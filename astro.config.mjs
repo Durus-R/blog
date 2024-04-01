@@ -8,7 +8,7 @@ import vuetifyPlugin from "vite-plugin-vuetify";
 
 function vuetify(options) {
     return {
-        name: 'my-astro-vuetify-integration',
+        name: 'astro-vuetify-integration',
         hooks: {
             'astro:config:setup': ({ updateConfig }) => {
                 updateConfig({

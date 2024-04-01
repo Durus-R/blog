@@ -20,7 +20,21 @@ export default (app : App) => {
             }
         },
         theme: {
-            defaultTheme: 'dark'
+            defaultTheme: 'dark',
+            themes: {
+                dark: {
+                    dark: true,
+                    colors: {
+                        primary: '#d26019',
+                        secondary: '#424242',
+                        accent: '#ff82f9',
+                        error: '#FF5252',
+                        info: '#2196F3',
+                        success: '#4CAF50',
+                        warning: '#FFC107'
+                    }
+                }
+            }
         },
         ssr: true
 
