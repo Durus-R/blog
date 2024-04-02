@@ -3,10 +3,10 @@ import 'vuetify/styles'
 import "../styles/main.scss";
 
 interface Props {
-  title: string;
+    title: string;
 }
 
-const { title } = Astro.props;
+const {title} = Astro.props;
 
 const siteDescription = "Blog von Durus";
 const siteTitle = "Blog von Durus";
@@ -16,76 +16,80 @@ const siteURL = "https://durus-r.github.io/blog" // Change to durushub ;)
 <!doctype html>
 <html lang="en" class="bg-zinc-950">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={siteDescription} />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content={siteDescription}/>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <meta name="generator" content={Astro.generator}/>
     <title>{title}</title>
 
     <!--OG tags -->
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteURL} />
+    <meta property="og:title" content={siteTitle}/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content={siteURL}/>
 
-    <meta property="og:description" content={siteDescription} />
-    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:description" content={siteDescription}/>
+    <meta property="og:site_name" content={siteTitle}/>
 
     <link
-      rel="preload"
-      href="/IndustryBold.otf"
-      as="font"
-      type="font/otf"
-      crossorigin
+            rel="preload"
+            href="/IndustryBold.otf"
+            as="font"
+            type="font/otf"
+            crossorigin
     />
 
 
     <style is:global>
-      main {
-        animation: fadein 2s;
-      }
-      @font-face {
-        font-family: IndustryBlack;
-        src: url("/IndustryBold.otf") format("opentype");
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-family: "IndustryBlack", sans-serif !important;
-      }
-      .industry {
-        font-family: "IndustryBlack", sans-serif !important;
-      }
-
-      @keyframes fadein {
-        0% {
-          opacity: 0;
+        main {
+            animation: fadein 2s;
         }
 
-        50% {
-          opacity: 0;
+        @font-face {
+            font-family: IndustryBlack;
+            src: url("/IndustryBold.otf") format("opentype");
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
         }
-        to {
-          opacity: 1;
+
+        h1,
+        h2,
+        h3 {
+            font-family: "IndustryBlack", sans-serif !important;
         }
-      }
+
+        .industry {
+            font-family: "IndustryBlack", sans-serif !important;
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
-  </head>
-  <body>
-
-    <slot />
-    <style is:global>
-      :root {
+</head>
+<body>
+<div class="body_root">
+    <slot/>
+</div>
+<style is:global>
+    :root {
         --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
         /*--accent: 255, 148, 3;
         --accent-light: 0, 240, 155;
         --accent-dark: 49, 49, 249;
@@ -95,125 +99,142 @@ const siteURL = "https://durus-r.github.io/blog" // Change to durushub ;)
           rgb(var(--accent-light)) 30%,
           white 60%
         );*/
-      }
-      input {
+    }
+
+    .body_root {
+        margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    input {
         border-radius: 0;
-      }
+    }
 
-      a {
+    a {
         text-decoration: none;
-      }
+    }
 
-      input[type="search"] {
+    input[type="search"] {
         -webkit-appearance: none;
-      }
+    }
 
-      main {
+    main {
         max-width: calc(100% - 2rem);
         color: white;
         width: 1100px;
         margin: 0 auto;
         line-height: 1.6;
-      }
-      .container {
+    }
+
+    .container {
         width: 1100px;
         padding: 1rem;
         margin: auto;
-      }
-      .text-gradient {
-        background-image: var(--accent-gradient);
+    }
+
+    .text-gradient {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-size: 400%;
-        background-position: 0%;
+        background-position: 0;
         font-size: 2.75rem;
-      }
-      html {
+    }
+
+    html {
         font-family: system-ui, sans-serif;
         background-size: 224px;
-      }
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-      }
+    }
 
-      header {
+    code {
+        font-family: Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
+
+    header {
         max-width: 100%;
         height: auto;
-      }
-      main {
+    }
+
+    main {
         color: white;
 
         line-height: 1.6;
-      }
-      video {
+    }
+
+    video {
         max-width: 100%;
-      }
-      body {
+    }
+
+    body {
         margin: 0;
-      }
-      h1 {
+    }
+
+    h1 {
         margin-top: 0.25rem;
-      }
-      .text-center {
+    }
+
+    .text-center {
         text-align: center;
-      }
-      .spinner {
+    }
+
+    .spinner {
         display: block;
         animation: fadeout 1s;
-      }
-      .card {
-        display: none;
-      }
+    }
 
-      #dotone {
+    .card {
+        display: none;
+    }
+
+    #dotone {
         animation: blink 1s infinite;
-      }
-      #dottwo {
+    }
+
+    #dottwo {
         animation: blink 1s infinite;
         animation-delay: 0.25s;
-      }
-      #dotthree {
+    }
+
+    #dotthree {
         animation: blink 1s infinite;
         animation-delay: 0.5s;
-      }
+    }
 
-      @keyframes blink {
+    @keyframes blink {
         0% {
-          opacity: 0;
+            opacity: 0;
         }
         50% {
-          opacity: 1;
+            opacity: 1;
         }
         100% {
-          opacity: 0;
+            opacity: 0;
         }
-      }
+    }
 
-      @keyframes fadein {
+    @keyframes fadein {
         from {
-          opacity: 0;
+            opacity: 0;
         }
         to {
-          opacity: 1;
+            opacity: 1;
         }
-      }
+    }
 
-      @keyframe fadeout {
+    @keyframe fadeout {
         from {
-          opacity: 1;
+            opacity: 1;
         }
+
         to {
-          opacity: 0;
+            opacity: 0;
         }
-      }
-    </style>
-  </body>
+    }
+</style>
+</body>
 </html>
