@@ -1,8 +1,3 @@
 {
-  "extends": "astro/tsconfigs/base",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "types": ["vuetify"],
-    "moduleResolution": "node"
-  }
+  "extends": "astro/tsconfigs/base"
 }
