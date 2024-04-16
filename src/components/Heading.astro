@@ -1,5 +1,5 @@
 ---
-import Social from "./Social.vue";
+import Social from "./Social.astro";
 import Avatar from "../components/Avatar.astro";
 
 interface props {
@@ -14,7 +14,7 @@ interface props {
     <Avatar />
   </a>
   <div class="social-icons">
-    <Social client:visible/>
+    <Social />
   </div>
 </div>
 </div>

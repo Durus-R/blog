@@ -1,12 +1,9 @@
-import type {App} from 'vue'
-
 import {createVuetify} from "vuetify";
-// @ts-ignore
 import {aliases, mdi} from 'vuetify/lib/iconsets/mdi-svg'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-export default (app : App) => {
+export default (app) => {
     const vuetify = createVuetify({
         components: {
             ...components,
@@ -18,11 +15,7 @@ export default (app : App) => {
             sets: {
                 mdi
             }
-        },
-        theme: {
-            defaultTheme: 'dark'
-        },
-        ssr: true
+        }
 
     });
     app.use(vuetify)
