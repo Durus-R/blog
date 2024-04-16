@@ -6,40 +6,38 @@ import {aliases, mdi} from 'vuetify/lib/iconsets/mdi-svg'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-export default (app: App) => {
+export default (app : App) => {
     const vuetify = createVuetify({
-            components: {
-                ...components,
-            },
-            directives,
-            icons: {
-                defaultSet: 'mdi',
-                aliases,
-                sets: {
-                    mdi
-                }
-            },
-            theme: {
-                defaultTheme: 'dark',
-                themes: {
-                    "dark": {
-                        dark: true,
-                        colors: {
-                            primary: "#d26019",
-                            secondary: "#424242",
-                            accent: "#ff9403",
-                            error: "#FF5252",
-                            info: "#2196F3",
-                            success: "#4CAF50",
-                            warning: "#FFC107"
-                        }
+        components: {
+            ...components,
+        },
+        directives,
+        icons: {
+            defaultSet: 'mdi',
+            aliases,
+            sets: {
+                mdi
+            }
+        },
+        theme: {
+            defaultTheme: 'dark',
+            themes: {
+                dark: {
+                    dark: true,
+                    colors: {
+                        primary: '#d26019',
+                        secondary: '#424242',
+                        accent: '#ff82f9',
+                        error: '#FF5252',
+                        info: '#2196F3',
+                        success: '#4CAF50',
+                        warning: '#FFC107'
                     }
                 }
+            }
+        },
+        ssr: true
 
-            },
-            ssr: true
-
-        })
-    ;
+    });
     app.use(vuetify)
 };

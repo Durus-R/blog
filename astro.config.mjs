@@ -1,4 +1,5 @@
 import {defineConfig, squooshImageService} from "astro/config";
+import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import vue from "@astrojs/vue";
 import vuetifyPlugin from "vite-plugin-vuetify";
@@ -15,9 +16,7 @@ function vuetify(options) {
                         ssr: {
                             noExternal: ['vuetify'],
                         },
-                        plugins: [vuetifyPlugin({
-                            styles: "src/styles/main.scss"
-                        })],
+                        plugins: [vuetifyPlugin()],
                     },
                 });
             },
@@ -30,7 +29,7 @@ export default defineConfig({
         service: squooshImageService()
     },
 
-    integrations: [mdx(), vue({
+    integrations: [tailwind(), mdx(), vue({
         jsx: true,
         appEntrypoint: "./src/scripts/create_vuetify.ts"
     }), vuetify()],
