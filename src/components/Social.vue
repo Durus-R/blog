@@ -1,15 +1,17 @@
 <template>
 
-  <div
-      class="social-links"
-  >
-    <v-btn rounded="lg" class="me-5" :icon="mdiGithub" :href="githubURL"></v-btn>
+  <div class="social-links my-4">
+    <div
+        class="grid grid-cols-2 md:grid-cols-8 lg:grid-cols-2 gap-y-2 gap-2 justify-center w-full"
+    >
+      <v-btn rounded="lg" :icon="mdiGithub" :href="githubURL"></v-btn>
 
-    <v-btn rounded="lg" :icon="mdiLinkedin" :href="linkedinURL"></v-btn>
+      <v-btn rounded="lg" :icon="mdiLinkedin" :href="linkedinURL"></v-btn>
 
-    <!-- TODO: rss Url -->
+      <!-- TODO: rss Url -->
 
 
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -20,16 +22,6 @@ const githubURL = 'https://github.com/durus-r/'
 const linkedinURL = 'https://linkedin.com/in/rene-regensbogen/'
 </script>
 <style lang="scss">
-
-.social-links {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.125rem;
-  justify-content: center;
-  width: 25%;
-}
-
 .v-icon svg {
   transition: transform 0.2s ease-in-out;
 }

@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/BaseLayout.astro";
-import "../styles/main.scss";
+
 import Card from "../components/Card.astro";
 import Heading from "../components/Heading.astro";
 import LastEntries from "../components/LastEntries.astro";
@@ -9,10 +9,11 @@ import Test from "../components/Test.vue"
 ---
 
 <Layout title="Blog von Durus">
-    <main>
+  <div id="contents">
+    <main class="container">
       <div class="mb-16">
         <Heading />
-        <!-- <Test></Test>-->
+        <Test></Test>
         <p
           class="mt-4 text-lg text-zinc-500 dark:text-zinc-400 font-light lg:text-xl"
         >
@@ -37,6 +38,7 @@ import Test from "../components/Test.vue"
         <Contact />
       </div>
     </main>
+  </div>
 </Layout>
 
 <style is:global>
@@ -47,6 +49,23 @@ import Test from "../components/Test.vue"
     max-width: 100%;
     color: white;
     line-height: 1.6;
+  }
+  .project-image {
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+  .project-cards {
+  }
+  .video-wrapper {
+    background: #111111;
+    padding: calc(1.5rem - 1px);
+    line-height: 1.4;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  .project-column > div {
+    max-width: 100%;
+    overflow: hidden;
   }
   .projects-alt > li {
     gap: 1rem !important;
@@ -62,16 +81,57 @@ import Test from "../components/Test.vue"
   }
 
   .text-gradient {
+    background-image: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
-    background-position: 0;
+    background-position: 0%;
     font-size: 2.75rem;
+  }
+  .instructions {
+    margin-bottom: 2rem;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    background: linear-gradient(
+      rgba(var(--accent-dark), 66%),
+      rgba(var(--accent-dark), 33%)
+    );
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  .instructions code {
+    font-size: 0.8em;
+    font-weight: bold;
+    background: rgba(var(--accent-light), 12%);
+    color: rgb(var(--accent-light));
+    border-radius: 4px;
+    padding: 0.3em 0.4em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent-light));
   }
   .link-card-grid {
     display: grid;
     gap: 0;
     padding: 0;
+  }
+  .read-more {
+    color: #fff;
+  }
+  details {
+    position: relative;
+    top: -1px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+    max-width: 900px;
+  }
+  details > div {
+    max-width: 830px;
+  }
+
+  summary:hover {
+    cursor: pointer;
   }
 </style>
 
