@@ -16,7 +16,7 @@ export default {
         },
         fontFamily: {
             body: [
-                "IndustryBlack",
+                "LatoBlack",
                 "Inter",
                 "ui-sans-serif",
                 "system-ui",
@@ -34,7 +34,7 @@ export default {
                 "Noto Color Emoji",
             ],
             sans: [
-                "IndustryBlack",
+                "LatoBlack",
                 "Inter",
                 "ui-sans-serif",
                 "system-ui",

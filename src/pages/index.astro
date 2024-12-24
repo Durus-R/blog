@@ -16,14 +16,13 @@ import Contact from "../components/PersonalInfo.astro";
                         class="mt-4 text-lg text-secondary font-light lg:text-xl"
                 >
                     Mein Name ist René "Durus" Regensbogen.
-                    Ich studiere seit 2023 Informatik an der dualen Hochschule Baden-Württemberg in Friedrichshafen;
-                    Mein dualer Arbeitgeber ist die ZF Friedrichshafen AG.
+                    Ich studiere seit 2023 Informatik an der dualen Hochschule Baden-Württemberg in Friedrichshafen.
                     Willkommen auf meiner Website!
                 </p>
             </div>
             <div class="mb-16 mx-auto">
                 <h2
-                        class="text-3xl mt-6 font-medium lg:text-4xl tracking-tight"
+                        class="text-3xl mt-6 lg:text-4xl tracking-tight"
                 >Letzte Posts</h2>
                 <LastEntries/>
             </div>
@@ -102,6 +101,10 @@ import Contact from "../components/PersonalInfo.astro";
 
     summary:hover {
         cursor: pointer;
+    }
+
+    h2 {
+        font-weight: bolder;
     }
 </style>
 

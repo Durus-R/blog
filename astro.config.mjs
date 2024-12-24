@@ -9,5 +9,5 @@ export default defineConfig({
     service: squooshImageService()
   },
   integrations: [tailwind(), mdx()],
-  site: "https://blogbydurus.vercel.app"
+  site: "https://durusr.com"
 });
