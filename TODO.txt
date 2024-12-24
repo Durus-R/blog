@@ -1,2 +1,2 @@
-- RSS Feed
-- Kontaktformular
+- Font wechseln
+- Twitch link

@@ -1,13 +1,14 @@
 ---
 const githubURL = "https://github.com/durus-r"
 const linkedinURL = "https://www.linkedin.com/in/rene-regensbogen/"
-import {mdiGithub, mdiLinkedin, mdiWeatherSunny} from "@mdi/js"
+const twitchURL = "https://www.twitch.tv/durus_r"
+import {mdiGithub, mdiLinkedin, mdiWeatherSunny, mdiTwitch} from "@mdi/js"
 
 ---
 
 <div class="my-4">
   <div
-    class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-y-2 gap-2 justify-center w-full"
+    class="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-y-2 gap-2 justify-center w-full"
   >
       <button data-toggle-theme="theDarkTheme,theLightTheme" data-act-class="ACTIVECLASS"
           class="fill-info btn btn-neutral"><svg viewBox="0 0 24 24" class="h-7 w-7">
@@ -25,6 +26,12 @@ import {mdiGithub, mdiLinkedin, mdiWeatherSunny} from "@mdi/js"
       <button
           class="fill-info btn hover:btn-base-100 btn-neutral"><svg viewBox="0 0 24 24" class="h-7 w-7">
         <path d={mdiLinkedin}></path>
+      </svg></button></a>
+
+    <a href={twitchURL}>
+      <button
+          class="fill-info btn hover:btn-base-100 btn-neutral"><svg viewBox="0 0 24 24" class="h-7 w-7">
+        <path d={mdiTwitch}></path>
       </svg></button></a>
 
   </div>
