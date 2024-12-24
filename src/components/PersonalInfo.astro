@@ -1,16 +1,21 @@
 ---
-import Social from "./Social.astro";
-import { Image} from "astro:assets";
+import { Image } from "astro:assets";
 import Mainquest_Logo from "../assets/mainquest.png";
 import Footer from "./Footer.astro";
+
+import { getEntry } from "astro:content"
+const personal_info = await getEntry("meta", "personal_info")
+//console.log(personal_info)
+const PersonalInfoRender = await personal_info.render()
+const PersonalInfo = PersonalInfoRender.Content
+const personal_info_title = personal_info.data.title
 ---
 
-<div id="contact">
+
+<div id="personal_info">
     <div class="mb-16 mx-auto">
-        <h2 class="font-bold text-3xl m-0 mb-2">Kontaktier mich</h2>
-        <div>Ich aus persönlichen Gründen nicht auf DMs per Discord, WhatsApp oder ähnlichem.
-            Gerne kannst du mir jedoch eine Nachricht über LinkedIn senden.
-        </div>
+        <h2 class="font-bold text-3xl m-0 mb-2">{personal_info_title}</h2>
+            <PersonalInfo/>
         <div class="flex justify-center mt-40 mb-8">
             <Image src={Mainquest_Logo}
                    alt="Mainquest e. V. Logo"/>

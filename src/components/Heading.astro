@@ -1,11 +1,15 @@
 ---
 import Social from "./Social.astro";
 import Avatar from "../components/Avatar.astro";
+import {Astro} from "astro/env";
 
 interface props {
   title: string;
   image: string;
 }
+
+const url = new URL(Astro.request.url);
+const ShowSocial = url.pathname == "/";
 ---
 <div class="grid">
 <div class="heading-container align-middle">
@@ -14,7 +18,7 @@ interface props {
     <Avatar />
   </a>
   <div class="social-icons">
-    <Social />
+    {ShowSocial && <Social />}
   </div>
 </div>
 </div>

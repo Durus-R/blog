@@ -2,8 +2,14 @@
 import BaseLayout from './BaseLayout.astro'
 import Heading from "../components/Heading.astro";
 import Footer from "../components/Footer.astro";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
 ---
-<BaseLayout>
+<BaseLayout title={title}>
     <div id="contents">
         <main class="container">
             <div class="mb-16">

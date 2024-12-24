@@ -1,0 +1,88 @@
+---
+title: Mehr Apps auf SD-Karte verschieben
+subtitle: Wie man den Speicherort von Apps unter Android erzwingt
+pubDate: 2024-04-22
+---
+## Das Problem
+Auch in 2024 gibt es noch Unmengen an Android-Geräten, welche nur wenig Speicher haben, und deutlich gewachsene Apps und Spiele sowie Offline-Downloads von Netflix, Disney+ und Co geben diesem Speicher oft den Rest.
+Die meisten Android-Nutzer haben das Privileg, einen SD-Karten-Slot zu haben. Im Gegenteil zu der Nintendo Switch, dem Steam Deck oder Windows lassen sich nicht einfach so Apps und Dateien darauf kopieren, da Android dem Nutzer nur sehr wenig Privilegien einräumt - was dafür aber zu einer besseren Wartbarkeit der Geräte sorgt (zumindestens ich hatte noch nie einen bluescreen in 8 Jahren Android).
+
+## Was schon so geht
+Standardmäßig unterstützen die meisten Wald-und-Wiesen-Smartphones folgende Operationen für die SD-Karte:
+- Standard-Speichern von Fotos und Dokumenten
+- Verschieben einiger weniger Apps
+Dies hilft jedoch nur begrenzt, da Fotos zumindestens bei mir einen Bruchteil aller Daten ausmachen, wobei es bei einigen Bekannten anders ist. Außerdem lassen sich zum Beispiel Teamfight Tactics und Microsoft Office nicht verschieben, dabei sind diese Apps 1,5 bzw. 0,5 GB groß, was auf dem internen 64GB-Chip eine ordentliche Hausnummer ist.
+
+Diese Apps lassen sich nicht verschieben, da die Entwickler dies deaktiviert haben. Eine App lässt sich genau dann verschieben, wenn die Entwickler dies im sogeannten Android Manifest (praktisch der internen Packungsbeilage der App) aktiviert haben. Die meisten Entwickler haben dies jedoch nicht, und das aus guten Gründen:
+
+Viele Nutzer haben Smartphones mit schlechten SD-Kartenslots, welche keine ordentlichen Geschwindigkeiten bringen.
+Eine mögliche Folge wäre, dass es auf Google Play schlechte Bewertungen hagelt, welche eine schlechte App-Performance bemängeln - wobei der Grund für diese Performance in wirklichkeit die schlechte Geschwindigkeit der SD-Karte ist, auf die die Nutzer diese App verschoben haben.
+
+Eine weitere Folge ist, dass Apps auf SD-Karten länger brauchen, bis das Betriebssystem diese lädt und im Launcher anzeigt, und diese Apps dann auch keine Widgets bereitstellen können.
+
+Außerdem passieren noch ein paar andere hübsche Nebeneffekte, unter anderem habe ich bemerkt, dass Samsung diese Apps nach jedem Neustart des Gerätes aus dem Seitenmenü wirft.
+
+Trotzdem will ich euch zeigen, wie man diese Apps trotzdem verschieben kann - man benötigt lediglich die PIN oder das Muster seines Gerätes, man muss weder den Bootloader entsperren noch das Gerät per USB-Kabel am PC modifizieren.
+
+Getestet habe ich dies an einem Samsung Galaxy TAB S7 FE mit Android 14 / ONE UI 6.0, auch auf meinem Pixel 6 (ebenfalls Android 14) erscheint die Option. Andere Geräte kann ich leider nicht bestätigen, dies werde ich jedoch demnächst nachholen.
+
+### 1) Aktivieren der Entwickleroptionen
+Als allererstes müsst ihr die sogenannten Entwickleroptionen aktivieren. Diese schalten verschiedene Funktionalitäten frei, welche selbst für erfahrene Android-Nutzer teilweise ein Buch mit sieben Siegeln sind.
+Eine Option aus dieser Büchse der Pandora benötigen wir aber.
+
+Zum Aktivieren verfahrt ihr wie folgt:
+Scrollt in den Einstellungen ganz nach unten, bis zum Punkt "Über das Telefon" oder "Telefon-Info"
+![Einstellungen](https://gist.github.com/assets/68396806/50b97cbf-48d9-4222-bcfd-59ed8cfdcf26)
+<!-- TODO: Bilder runterladen-->
+Nun tippt ihr gegebenenfalls auf "Software-Info", falls es einen solchen Punkt gibt. Sucht auf jeden Fall die Info "Build-Nummer"
+
+![Buildnummer](https://gist.github.com/assets/68396806/fa08052c-74f3-4027-90c0-affcf4fa695b)
+
+Dieser Eintrag ist in Wirklichkeit ein geheimer Knopf: Tippt 7x hintereinander auf diesen Eintrag - anschließend werdet ihr aufgefordert, euren Bildschirm zu entsperren.
+
+Nun sind die Entwickleroptionen freigeschaltet. Diese findet ihr entweder im ersten Einstellungsmenü ganz unten (also unter Telefon-Info bzw. Support) oder im Einstellungsmenü "System".
+
+Wechselt zu diesem Menü.
+
+### 2) Yay, Schalter umlegen!
+In diesem Menü findet ihr nun - neben der Einstellung "Entwickleroptionen aktivieren" - sehr viele Optionen, welche viele ... Sachen machen (an dieser Stelle Grüße an den lieben Nimrod ♥️), besser kann man die Einstellungen nicht verallgemeinern. Wenn ihr weit genug herunterscrollt, findet ihr irgendwo weit unten die Option "Sperrung des externen Speichers aufheben".
+
+![image](https://gist.github.com/assets/68396806/f52b4b99-6eab-487c-a626-99594358107d)
+
+Legt da den Schalter um.
+
+### 3) Auf der Zielgeraden
+Voilá! Jede App ist nun vom Interner-Speicher-Zwang befreit. Jede App? Nein! Eine von unbeugsamen Systemapps bevölkerte Gruppe hört nicht auf, dem Nutzer Widerstand zu leisten.
+
+Systemapps können nicht verschoben werden, dafür bräuchte man Root-Rechte. Und auch allgemein wäre es eine schlechte Idee, denn das Verschieben auf eine SD-Karte bringt eineige Nachteile mit sich, von denen ich einige schon aufgezählt habe:
+- SD-Karten sind ggf. langsamer als der interne Speicher. TFT auf der SD-Karte ließ sich allerdings bei mir gut spielen - was wahrscheinlich daran liegt, dass meine Karte und mein Slot ziemlich schnell sind.
+- Apps auf SD-Karten können keine Widgets bereitstellen. Warum genau, weiß ich nicht, geht auf jeden Fall nicht.
+- SD-Karten sind nicht besonders langlebig. Da auch die App-Daten auf der Karte gespeichert werden, würde ich da nicht unbedingt die geliebte MP3-Sammlung ohne Backup drauftun.
+- Nette Seiteneffekte, z. B. schmeißt Samsung diese Apps nach jedem Neustart aus der Sidebar heraus.
+- Apps von der SD-Karte werden nicht sofort geladen, es braucht immer nen Moment, in dem die Apps nach einem Neustart unbenutzbar sind.
+- SD-Karten sind standardmäßig nicht verschlüsselt.
+- Wenn die SD-Karte entfernt wird, sind die Apps selbstverständlich nicht nutzbar.
+
+## Apps verschieben
+Wenn ihr nicht wisst, wie man eine App nun verschieben kann, hier eine kurze Erklärung:
+- App-Info aufrufen (lange auf das Icon im Homescreen draufdrücken und dann auf (i) oder "App-Info"
+- Speichereinstellung der App aufrufen "Speicher", "Speicherplatz", "Speicher und Cache"
+- Auf "Speicherort ändern" oder "App verschieben" klicken
+- Den neuen Speicherort auswählen und den Anweisungen folgen (Hinweis: Schließt davor die App und speichert ggf. eure Arbeit - während des Verschiebens wird die App geschlossen.
+
+## Protipp
+[AppMgr III](https://play.google.com/store/apps/details?id=com.a0soft.gphone.app2sd) kann die nun befreiten Apps automatisch ohne Root-Rechten auf die SD-Karte verschieben. Dauert jedoch eine Weile, und die App ist voll mit Werbung.
+Dir Proversion kostet 3,79€, mir persönlich reicht die normale Version. Ihr findet das Verschiebetool unter "Apps verschieben". Dort könnt ihr auch mehrere Apps durch langes gedrückt halten gleichzeitig auswählen.
+Unten erscheint dann ein runder Knopf, über den ihr den Vorgang starten könnt (die App fragt aber ggf., ob sie als Bedienhilfe ausgeführt werden darf - das ist notwendig, da die die App im Grunde in den Menüs rumwühlt und dort die Apps mithilfe der UI verschiebt, dies klappt jedoch sehr zuverlässig. Um den Vorgang abzubrechen, könnt ihr die Home-Taste drücken).
+
+## Keine Erfolgsgarantie
+
+Auch wenn sich manche Apps so verschieben lassen, bleiben ihre Daten dennoch teilweise auf dem Hauptspeicher. Das gilt besonders
+für Apps, welche geschützte Inhalte speichern (z. B. Spotify oder Crunchyroll)
+## Hinweis zum Deaktivieren
+Wenn die Entwicklereinstellungen deaktiviert werden, wird automatisch auch die Option deaktiviert. Danach können Apps nicht mehr "herumgeschoben" (auch nicht zurück auf den internen Speicher) werden, bis ihr die Einstellung wieder aktiviert.
+
+## Wichtig!!!
+Keine Gewähr für eventuelle Schäden am Gerät oder an dem Android-System!
+
+
