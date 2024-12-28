@@ -1,5 +1,5 @@
 ---
-import Social from "./Social.astro";
+import Social from "./Social.vue";
 import Avatar from "../components/Avatar.astro";
 import {Astro} from "astro/env";
 
@@ -18,7 +18,7 @@ const ShowSocial = url.pathname == "/";
     <Avatar />
   </a>
   <div class="social-icons">
-    {ShowSocial && <Social />}
+    {ShowSocial && <Social client:only="vue"/>}
   </div>
 </div>
 </div>
@@ -35,7 +35,7 @@ const ShowSocial = url.pathname == "/";
     align-items: center;
   }
   h1 {
-    font-family: "LatoBlack", sans-serif !important;
+    font-family: "Lato", sans-serif !important;
   }
 
   @media (max-width: 768px) {
@@ -47,7 +47,7 @@ const ShowSocial = url.pathname == "/";
     }
     
     .social-icons {
-      justify-content: left;
+      display: none;
     }
   }
 </style>
