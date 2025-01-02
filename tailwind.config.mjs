@@ -1,5 +1,5 @@
-/** @type {Promise<Partial<CustomThemeConfig & {extend: Partial<CustomThemeConfig>}> | DefaultTheme>} */
-const defaultTheme = import("tailwindcss/defaultTheme");
+/** @type {Partial<CustomThemeConfig & {extend: Partial<CustomThemeConfig>}> & DefaultTheme} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
     content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -16,7 +16,7 @@ export default {
         },
         fontFamily: {
             body: [
-                "LatoBlack",
+                "Lato",
                 "Inter",
                 "ui-sans-serif",
                 "system-ui",
@@ -34,7 +34,7 @@ export default {
                 "Noto Color Emoji",
             ],
             sans: [
-                "LatoBlack",
+                "Lato",
                 "Inter",
                 "ui-sans-serif",
                 "system-ui",

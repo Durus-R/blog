@@ -3,6 +3,7 @@ import Layout from "../layouts/BaseLayout.astro";
 import Heading from "../components/Heading.astro";
 import LastEntries from "../components/LastEntries.astro";
 import Contact from "../components/PersonalInfo.astro";
+import {mdiApps} from "@mdi/js";
 ---
 
 <Layout title="Blog von Durus">
@@ -21,9 +22,16 @@ import Contact from "../components/PersonalInfo.astro";
                 </p>
             </div>
             <div class="mb-16 mx-auto">
-                <h2
+                <div class="flex flex-row items-center justify-between w-full"><h2
                         class="text-3xl mt-6 lg:text-4xl tracking-tight"
-                >Letzte Posts</h2>
+                >Letzte Posts</h2><a href="/post_overview">
+                    <button class="fill-info btn btn-neutral"
+                    aria-label="Post Overview">
+                        <svg viewBox="0 0 24 24" class="h-7 w-7">
+                            <path d={mdiApps}></path>
+                        </svg>
+                    </button>
+                </a></div>
                 <LastEntries/>
             </div>
 
@@ -107,5 +115,3 @@ import Contact from "../components/PersonalInfo.astro";
         font-weight: bolder;
     }
 </style>
-
-<script></script>

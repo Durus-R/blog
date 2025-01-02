@@ -1,13 +1,18 @@
-import { defineConfig, squooshImageService } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-
+import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
 import mdx from "@astrojs/mdx";
+
+import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
   image: {
-    service: squooshImageService()
+    service: sharpImageService()
   },
-  integrations: [tailwind(), mdx()],
-  site: "https://durusr.com"
+  integrations: [tailwind(), mdx(), vue()],
+  site: "https://durusr.com",
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  }
 });

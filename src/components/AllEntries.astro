@@ -1,0 +1,31 @@
+---
+import {getCollection} from "astro:content"
+import type {CollectionEntry} from "astro:content"
+
+let posts = await getCollection('posts');
+posts = posts.sort((a, b) => new Date(b.data.pubDate)  - new Date(a.data.pubDate))
+
+function getPubDate(post :  CollectionEntry<"posts">) {
+    return post.data.pubDate.toLocaleDateString('de-DE', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
+---
+<div class="flex">
+    {posts.map((post) => (
+            <a href={"/posts/" + post.slug} class="mt-5 mr-5 mb-5">
+                <div class="card hover:bg-base-100 min-h-48 w-96 bg-neutral shadow-xl image-full">
+                    {post.data.image && <figure><img src={post.data.image} /></figure>}
+                    <div class="card-body p-3">
+                        <h2 class="card-title">{post.data.title}</h2>
+                        <p>{post.data["subtitle"]}</p>
+                        <div class="justify-end">
+                            Erstellt am {getPubDate(post)}
+                        </div>
+                    </div>
+                </div>
+            </a>)
+    )}
+</div>
