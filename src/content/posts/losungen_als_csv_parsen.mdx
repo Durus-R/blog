@@ -1,0 +1,171 @@
+---
+title: Die Tageslosungen als CSV parsen und in Apps verwenden
+subtitle: Eine Einführung in CSV und die Verwendung in JS und Python
+pubDate: 2025-01-02
+---
+## Einleitung
+In diesem Blogeintrag möchte ich erklären, wie das CSV-Format funktioniert und am
+Beispiel der Tageslosungen zeigen, wie man dieses Format in verschiedenen Programmiersprachen verwenden kann.
+
+## Was ist CSV?
+CSV ist ein ziemlich einfaches Speicherformat.
+CSV-Dateien sind eine Art Tabelle, in welcher die einzelnen Spalten durch ein Komma getrennt sind.
+Durch einen Zeilenumbruch (\n) wird in die nächste Zeile geschaltet.
+
+Ein Beispiel:
+```
+Name,Fellfarbe,Gewicht
+Dina,Grau,6
+Felix,Schwarz,5
+```
+
+In diesem Beispiel ist die erste Zeile der sogenannte optionale Tabellen-Header.
+Mit diesem werden die einzelnen Spalten benannt.
+
+Die weiteren Zeilen sind die eigentlichen Daten.
+In einer Tabelle interpretiert würden diese wie folgt aussehen:
+
+| Name  | Fellfarbe | Gewicht |
+|-------|-----------|---------|
+| Dina  | Grau      | 6       |
+| Felix | Schwarz   | 5       |
+
+Wie man sieht, werden hier zwei Gadsen beschrieben, Dina und Felix.
+Natürlich können deutlich mehr als zwei Zeilen benutzt werden, CSV legt dabei keine Grenzen fest.
+Man muss allerdings sagen, dass CSV kein besonders effizientes Format ist, da es nicht komprimieren kann.
+Vor allem für spärlich besetzte Tabellen (Viele Null-Werte) ist es deshalb nicht geeignet.
+
+## Herunterladen der Tageslosungen als CSV
+
+Die Tageslosungen sind ein christliches Andachtsbuch, welches für jeden Tag einen gezogenen Vers aus dem Alten Testament
+("Losungsvers") und einen händisch ausgewählten Vers aus dem Neuen Testament ("Lehrvers") enthält.
+
+Wenn die Nutzungsbedingungen erfüllt sind, können diese Verse heruntergeladen und eigens verwendet werden.
+
+Der Link dazu ist [hier](https://www.losungen.de/download/). Meiner Erfahrung nach ist das beste Format `CSV / TXT`.
+
+### Konvertierung der Losungen in UTF-8
+
+Leider ist die Codierung der heruntergeladenen Datei nicht UTF-8, womit Linux und das Web am besten zurechtkommt, sondern
+cp1252, eine Codierung, die Windows verwendet.
+Es empfiehlt sich, die Datei in UTF-8 zu konvertieren.
+Dies geschieht am einfachsten, indem man die Datei im Windows-Notepad / Editor oder VS Code öffnet und sie mit einer anderen Codierung speichert.
+
+In Notepad geschieht das, indem man Strg+Shift+S drückt und dann die Codierung auf UTF-8 umstellt.
+Dabei darf nicht vergessen werden, die Endung richtig auszuwählen, da Notepad sonst die Datei als Textdatei speichert.
+
+In VS Code befindet sich unten rechts in der Leiste ein Knopf, der die Codierung anzeigt. Beim Klicken auf diesen bietet
+VS Code an, die Datei in einem anderen Format zu speichern.
+
+### Übersicht über die Tabellen-Header der CSV-Datei
+
+Die Header der CSV-Datei sind die folgenden:
+
+| Name         | Beschreibung                                                               |
+|--------------|----------------------------------------------------------------------------|
+| Datum        | Das Datum der Losung                                                       |
+| Wtag         | Der heutige Wochentag (Montag, Dienstag, ...)                              |
+| Sonntag      | An Sonntagen ist hier der Name des Sonntags (z. B. Epiphanias) geschrieben |
+| Losungsvers  | Versangabe des Losungstextes                                               |
+| Losungstext  | Vers aus dem AT                                                            |
+| Lehrtextvers | Versangabe des Lehrtextes                                                  |
+| Lehrtext     | Vers aus dem NT                                                            |
+
+> Hinweis: Die CSV-Datei nutzt als Trennzeichen nicht Kommas, sondern Semikolons. Außerdem wird mit /Text/ Text hervorgehoben.
+
+### Einlesen der CSV-Datei in Python
+
+Hier ein Snippet, mitdem die Datei in Python eingelesen wird. Das Ergebnis ist eine Liste aus Dictionaries.
+```python
+import csv
+
+def read_csv(csv_path: str) -> list[dict[str, str]]:
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        return list(reader) # Auflösen des Iterators
+```
+
+Die Items der resultierenden Liste haben ungefähr das folgende Format:
+```json
+{
+    "Datum": "01.01.2025",
+    "Wtag": "Donnerstag",
+    "Sonntag": "",
+    "Losungsvers": "Buch 12,3",
+    "Losungstext": "...",
+    "Lehrtextvers": "Brief 4,56",
+    "Lehrtext": "..."
+}
+```
+
+Da CSV aber ein sehr einfaches Format ist, kann man die Datei auch ohne Bibliotheken mit for-Schleifen lesen:
+```python
+header = []
+result = []
+for ln, line in enumerate(open('losungen.csv', 'r', encoding='utf-8')):
+    items = line.strip().split(';')
+    if ln == 0: # Erste Zeile
+        header = items # Header speichern
+    else:
+        result.append(dict(zip(header, items)))
+```
+
+### Einlesen der CSV-Datei in JS
+
+In JS benutzen wir die Bibliothek `papaparse`, um die Datei einzulesen.
+```js
+import Papa from 'papaparse';
+function parse() {
+  Papa.parse(`/path/to/losungen.csv`, {
+    encoding: 'utf-8',
+    download: true,
+    complete: (result) => {
+      const jsonData = result.data;
+        console.log(jsonData);
+    },
+    header: true,
+    delimiter: '\t'
+  });
+}
+```
+
+[Mehr Infos zu Papaparse](https://www.papaparse.com/docs) (JA, die Dokumentation ist wirklich so kurz).
+
+Das Ergebnis sieht dann wie folgt aus:
+
+```json5
+[
+  {
+    "Datum": "01.01.2025",
+    "Wtag": "Donnerstag",
+    "Sonntag": "",
+    "Losungsvers": "Buch 12,3",
+    "Losungstext": "...",
+    "Lehrtextvers": "Brief 4,56",
+    "Lehrtext": "..."
+  }, {
+    // ...
+  }
+]
+```
+
+## Bonus: Konvertierung von / in *
+
+Einige Losungen enthalten Text, der hervorgehoben werden soll.
+Dieser wird durch `/Text/` gekennzeichnet. In z. B. Markdown jedoch wird Text durch `*Text*` hervorgehoben.
+Dies kann man beheben, indem man trivial alle `/` durch `*` ersetzt.
+
+In Python sieht das so aus:
+```python
+def convert_to_markdown(text: str) -> str:
+    return text.replace('/', '*')
+```
+
+In JS sieht das so aus:
+```js
+function convertToMarkdown(text) {
+  return text.replace(/\//g, '*');
+}
+```
+
+Auch hier soll das Argument `text` eine Zeichenkette sein.
