@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8df643f2-f298-42a1-be2d-e5997c56344f" name="NixOS VPS">
+        <fileTransfer accessType="SFTP" host="[2a01:4f8:c013:77f6::1]" port="22" sshConfigId="271f9310-125f-4804-a8bf-5c97d26c5507" sshConfig="durus@[2a01:4f8:c013:77f6::1]:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
