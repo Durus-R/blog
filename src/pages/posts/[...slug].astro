@@ -32,7 +32,7 @@ const minutesRead = remarkPluginFrontmatter.minutesRead
     )}
     <Content/>
 
-    <ShareButton url={Astro.url} title={entry.data.title}/>
+    <ShareButton client:only="vue" url={Astro.url} title={entry.data.title}/>
 
 </MainLayout>
 <style is:global lang="scss">

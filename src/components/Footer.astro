@@ -1,13 +1,18 @@
 ---
 import Social from "./Social.vue";
+import Watcher from "./../assets/watcher.png"
+import {Image} from 'astro:assets';
 ---
+
 <div class="flex justify-center mt-14 mb-10">
     <Social client:only="vue"/>
 </div>
 <div class="flex justify-center mb-10">
-        <a class="mr-2" href="/datenschutz">Datenschutz</a>
-        <a href="/zusatzangaben">Zusatzangaben</a>
+    <a class="mr-2" href="/datenschutz">Datenschutz</a>
+    <a href="/zusatzangaben">Zusatzangaben</a>
 </div>
-<div class="flex justify-center mb-16">Dieser Blog basiert auf&nbsp; <a
-        href="https://github.com/leabs/shadowstack-portfolio">ShadowStack Portfolio</a>.
+<div class="flex justify-center">
+<a href="https://warhammer40k.fandom.com/wiki/Watchers_in_the_Dark" class="flex justify-center w-32 h-32 mb-0">
+    <Image src={Watcher} densities={[1, 2, 3]} alt="Watcher" class="w-32 h-100 mb-0"/>
+</a>
 </div>
