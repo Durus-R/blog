@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import headshot from '../assets/Profilbild.jpeg';
-const cite = "Death to the false Empereor! Oh wait... Isn't he already dead?" // TODO: Add dynamic Cites
+import headshot from '../assets/Profilbild.webp';
+import Cite  from "./cite.vue";
 ---
 
 <div class="relative flex items-center my-4 gap-x-4">
@@ -16,6 +16,6 @@ const cite = "Death to the false Empereor! Oh wait... Isn't he already dead?" //
     <h1 class="text-4xl font-semibold mt-0 grimoire-font">
         Website von Durus
     </h1>
-    <p class="text-accent">{cite}</p>
+    <Cite client:only="vue"/>
   </div>
 </div>
