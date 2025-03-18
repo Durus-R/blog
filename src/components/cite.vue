@@ -1,6 +1,6 @@
 <template>
   <div class="text-container">
-    <p class="text-accent">
+    <p class="text-accent min-h-8">
       {{ displayedText }}
     </p>
   </div>
@@ -36,7 +36,7 @@ const typing = ref(false);
 
 function startTyping() {
   typing.value = true;
-  displayedText.value = " ";
+  displayedText.value = "";
   let i = 0;
 
   const interval = setInterval(() => {
@@ -51,6 +51,7 @@ function startTyping() {
 
 setInterval(() => {
   if (!typing.value) {
+    cite.value = ""
     cite.value = random_cite();
     startTyping();
   }
