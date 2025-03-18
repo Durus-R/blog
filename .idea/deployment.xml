@@ -6,10 +6,9 @@
         <serverdata>
           <mappings>
             <mapping deploy="/var/www/homepage" local="$PROJECT_DIR$/dist" web="/" />
-            <mapping local="" />
           </mappings>
           <excludedPaths>
-            <excludedPath path="/var/www/.well-known/discord" />
+            <excludedPath path=".well-known" />
           </excludedPaths>
         </serverdata>
       </paths>
