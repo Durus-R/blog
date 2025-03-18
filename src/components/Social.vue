@@ -1,10 +1,11 @@
 <script setup>
 import {computed, ref} from "vue";
-import {mdiGithub, mdiLinkedin, mdiMoonWaningCrescent, mdiTwitch, mdiWeatherSunny} from "@mdi/js"
+import {mdiGithub, mdiButterfly as mdiBsky, mdiLinkedin, mdiMoonWaningCrescent, mdiTwitch, mdiWeatherSunny} from "@mdi/js"
 
 const githubURL = "https://github.com/durus-r"
 const linkedinURL = "https://www.linkedin.com/in/rene-regensbogen/"
 const twitchURL = "https://www.twitch.tv/durusvt"
+const bskyUrl = "https://bsky.app/profile/durusr.com"
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -38,9 +39,9 @@ function toggleDarkmode() {
 const darkModeIcon = computed(() => darkMode.value === 'light' ? mdiMoonWaningCrescent : mdiWeatherSunny)
 </script>
 <template>
-  <div class="my-4">
+  <div class="my-5">
     <div
-        class="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-y-2 gap-2 justify-center w-full">
+        class="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-5 gap-y-2 gap-2 justify-center w-full">
 
       <button @click=toggleDarkmode
               class="fill-info btn btn-neutral"
@@ -79,6 +80,16 @@ const darkModeIcon = computed(() => darkMode.value === 'light' ? mdiMoonWaningCr
             class="fill-info btn hover:btn-base-100 btn-neutral">
           <svg viewBox="0 0 24 24" class="h-7 w-7">
             <path :d=mdiTwitch></path>
+          </svg>
+        </button>
+      </a>
+
+      <a :href=bskyUrl>
+        <button
+            aria-label="Bsky Profile"
+            class="fill-info btn hover:btn-base-100 btn-neutral">
+          <svg viewBox="0 0 24 24" class="h-7 w-7">
+            <path :d=mdiBsky></path>
           </svg>
         </button>
       </a>
