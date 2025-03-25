@@ -16,6 +16,7 @@ function random_cite() {
     "Bitte Alt+F4 drücken, um das nächste Zitat zu laden.",
     "Lorem ipsum sed amet.",
     "#?$%&/()=+*~",
+    "#!/bin/bash nazis",
     "'); DROP TABLE users; --",
     "Das ist ein Zitat.",
     "For the greater food.",
