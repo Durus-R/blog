@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/wrangler.toml">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/wrangler.toml" />
+              <option name="originalContent" value="name = &quot;blog&quot;&#10;type = &quot;javascript&quot;&#10;account_id = &quot;DEINE_ACCOUNT_ID&quot;&#10;workers_dev = true&#10;compatibility_date = &quot;2025-08-12&quot;&#10;" />
+              <option name="updatedContent" value="name = &quot;blog&quot;&#10;type = &quot;javascript&quot;&#10;account_id = &quot;DEINE_ACCOUNT_ID&quot;&#10;workers_dev = true&#10;compatibility_date = &quot;2025-08-12&quot;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
