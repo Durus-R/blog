@@ -1,5 +1,5 @@
 {
-  "name": "new-port",
+  "name": "durus-blog",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
@@ -37,5 +38,8 @@
     "vite-gleam": "^0.4.3",
     "vite-plugin-vue-devtools": "^7.7.1",
     "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.1"
   }
 }
